@@ -1,0 +1,45 @@
+/**
+ * 폰트 크기 시스템 (rem 기반)
+ * 루트 폰트 크기를 변경하면 전체 폰트 크기가 조정됨
+ * 
+ * 허용된 rem 수치만 사용:
+ * - 0.75rem  (12px)  - 작은 텍스트, 캡션
+ * - 0.875rem (14px)  - 보조 텍스트
+ * - 1rem     (16px)  - 기본 본문 텍스트
+ * - 1.125rem (18px)  - 강조 본문
+ * - 1.25rem  (20px)  - 작은 제목
+ * - 1.5rem   (24px)  - 중간 제목
+ * - 2rem     (32px)  - 큰 제목
+ * - 2.5rem   (40px)  - 매우 큰 제목
+ * - 3rem     (48px)  - 히어로 제목
+ */
+
+:root {
+  /* 루트 폰트 크기 (기본값: 16px) */
+  font-size: 16px;
+  
+  /* 폰트 크기 변수 정의 */
+  --font-xs: 0.75rem;    /* 12px */
+  --font-sm: 0.875rem;   /* 14px */
+  --font-base: 1rem;     /* 16px */
+  --font-lg: 1.125rem;   /* 18px */
+  --font-xl: 1.25rem;    /* 20px */
+  --font-2xl: 1.5rem;    /* 24px */
+  --font-3xl: 2rem;      /* 32px */
+  --font-4xl: 2.5rem;    /* 40px */
+  --font-5xl: 3rem;      /* 48px */
+}
+
+/* 반응형 루트 폰트 크기 조정 (선택사항) */
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px; /* 모바일에서 약간 작게 */
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    font-size: 18px; /* 큰 화면에서 약간 크게 */
+  }
+}
+

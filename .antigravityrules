@@ -1,0 +1,121 @@
+# Base Project 코딩 규칙 (Antigravity 전용)
+
+## ⚠️ 필수: 코딩 작업 전 반드시 확인
+
+모든 코딩 작업을 시작하기 전에 **반드시 `CODING_GUIDE.md` 파일을 먼저 읽고 확인**해야 합니다.
+
+## 코딩 전 체크리스트
+
+1. ✅ `CODING_GUIDE.md` 파일을 읽었는가?
+2. ✅ 프로젝트의 기술 스택을 확인했는가? (React 19, TypeScript, Tailwind CSS)
+3. ✅ 파일 구조 규칙을 준수하는가?
+4. ✅ 네이밍 컨벤션을 따르는가?
+
+## 핵심 규칙 요약
+
+### 기술 스택
+- React 19.2.0 + TypeScript 5.9.3
+- Vite 7.2.4
+- Tailwind CSS 3.4.19
+- React Compiler 활성화
+
+### 필수 준수 사항
+- TypeScript 타입 정의 필수 (any 사용 금지)
+- Tailwind CSS 우선 사용 (인라인 스타일 지양)
+- 함수형 컴포넌트 사용
+- 컴포넌트는 단일 책임 원칙 준수
+- ESLint 규칙 준수
+
+### 파일 구조
+- `src/components/` - 재사용 가능한 컴포넌트
+- `src/pages/` - 페이지 컴포넌트
+- `src/hooks/` - Custom Hooks
+- `src/utils/` - 유틸리티 함수
+- `src/types/` - TypeScript 타입 정의
+- `src/services/` - API 서비스
+
+### 네이밍 규칙
+- 컴포넌트: PascalCase (예: `UserProfile.tsx`)
+- 함수/변수: camelCase (예: `getUserData`)
+- 상수: UPPER_SNAKE_CASE (예: `API_BASE_URL`)
+
+## 코딩 작업 시 항상 고려할 사항
+
+1. **타입 안정성**: 모든 변수와 함수에 타입 정의
+2. **가독성**: 코드는 읽기 쉽고 이해하기 쉬워야 함
+3. **재사용성**: 3번 이상 사용되면 컴포넌트로 분리
+4. **성능**: React Compiler가 자동 최적화하므로 불필요한 최적화 지양
+5. **일관성**: 프로젝트 전체에 걸쳐 일관된 스타일 유지
+6. **SEO 최적화**: 핵심 페이지는 SSR/SSG로 구현, 초기 HTML에 텍스트 포함
+7. **API 중단 기능**: 모든 API 호출에 AbortController 필수 적용
+8. **폰트 시스템**: rem 기반, 제한된 rem 수치만 사용 (0.75rem, 0.875rem, 1rem, 1.125rem, 1.25rem, 1.5rem, 2rem, 2.5rem, 3rem)
+9. **스타일링**: Tailwind 우선, 실무적으로 인라인이 더 적합한 경우만 인라인 사용
+10. **코드 최적화**: 중복 코드 제거, 불필요한 코드 제거
+
+## 작업 일지 관리
+
+- 하루 작업이 끝날 때마다 `npm run work-log` 명령으로 작업 일지 생성/업데이트
+- 작업 일지는 `docs/work-logs/YYYY-MM-DD.md` 형식으로 저장
+- Git 커밋 로그를 기반으로 자동 생성되며, 수동으로 내용 추가 가능
+- 상세한 사용법은 `docs/WORK_LOG_GUIDE.md` 참고
+
+## Git 커밋 메시지 인코딩 안전 규칙
+
+- 이 저장소는 **한글 커밋 허용**을 기본으로 하되, `git commit -m "..."`를 사용하지 않는다.
+- 한글 커밋/푸시는 반드시 `scripts/commit-utf8.ps1` 경유로 수행한다.
+- 커밋 메시지는 루트의 `commit-msg.txt`(UTF-8)로 작성하고, 스크립트가 `git commit -F`로 처리한다.
+- `commit-msg.txt`는 **에디터에서 직접 저장**한다. (터미널 heredoc/echo로 메시지 생성 금지)
+- 사용자가 "푸쉬해줘"를 지시하면 위 방식으로 커밋 후 푸시한다.
+
+## 🚀 표준 협업 워크플로우 (Standard Operating Procedure)
+
+모든 프로젝트나 신규 기능 개발 시, 다음의 3단계 과정을 순차적으로 밟는 것을 원칙으로 합니다. 이 과정은 AI의 전역 탐색을 최소화하고 **토큰 사용량을 효율적으로 관리**하기 위한 핵심 프로세스입니다.
+
+### 1단계: 기획 및 설계 (Plan)
+- 사용자가 아이디어 또는 초안을 제시하면, AI와 협업하여 `docs/PLAN.md`를 먼저 작성합니다.
+- 요구사항, 목표, 핵심 기능을 명확히 정의합니다.
+
+### 2단계: 구조 및 기능 정의 (Structure & Function)
+- `PLAN.md`를 기반으로 다음 두 파일을 작성합니다.
+  - `docs/STRUCTURE.md`: 폴더 트리 구조, UI 상하위 계통, 레이아웃 배치 등을 정의합니다.
+  - `docs/FUNCTION.md`: STRUCTURE ID와 매칭되는 각 요소별 상세 기능 및 동작을 정의합니다.
+
+### 3단계: AI 작업 지도 작성 (State Flow)
+- 위 단계에서 작성된 모든 파일(PLAN, STRUCTURE, FUNCTION)을 바탕으로 AI가 `docs/STATE_FLOW.md`를 작성합니다.
+- **목적**: 각 컴포넌트별 상태 값의 저장 위치, 호출 관계, Props 흐름 등을 정리하여 **AI의 길잡이(Navigation Map)**로 활용합니다.
+- 이를 통해 AI는 매번 모든 파일을 전역 탐색하지 않고도 변경이 필요한 파일을 즉시 파악하여 정확하고 효율적으로 작업할 수 있습니다.
+
+---
+
+## 🛠️ 작업 및 유지보수 규칙
+
+### 1. STATE_FLOW 갱신 필수 프로토콜
+작업 중 상태 관리나 로직 흐름에 변화가 생겼다면, **매 작업 종료 전**에 반드시 `docs/STATE_FLOW.md`를 갱신해야 합니다. 이는 AI의 정확도를 유지하는 생명줄입니다.
+
+- **점검 항목 (5대 트리거)**:
+  1. 상태 소유 파일/위치가 바뀌었는가?
+  2. 상태 업데이트 트리거(함수 등)가 바뀌었는가?
+  3. 커스텀 훅의 의존성이나 소비 관계가 바뀌었는가?
+  4. API, 로컬 스토리지, 구독 등 부수효과가 바뀌었는가?
+  5. 특정 지시 수행 시 읽거나 고쳐야 할 후보 파일이 바뀌었는가?
+
+- **보고 의무**:
+  - 갱신 시: `STATE_FLOW.md`를 갱신하고 변경 내용을 보고합니다.
+  - 해당 없음 시: 최종 보고에 "STATE_FLOW 영향 없음 (5개 항목 점검 완료)"을 명시합니다.
+
+### 2. 코드 작업 전 확인 순서
+작업 시작 시 다음 순서대로 문서를 확인하여 컨텍스트를 동기화합니다.
+1. `docs/PLAN.md`
+2. `docs/STRUCTURE.md`
+3. `docs/FUNCTION.md`
+4. `docs/DESIGN.md`
+5. `docs/STATE_FLOW.md` (최종 작업 가이드)
+
+---
+## 참고 문서
+
+- 상세한 가이드라인: `CODING_GUIDE.md`
+- 기획·구조·기능·상태: `docs/PLAN.md`, `docs/STRUCTURE.md`, `docs/FUNCTION.md`, `docs/STATE_FLOW.md`
+- 디자인: `docs/DESIGN.md`
+- 작업 일지 사용 가이드: `docs/WORK_LOG_GUIDE.md`
+- 작업 일지 디렉토리: `docs/work-logs/`
