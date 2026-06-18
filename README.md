@@ -6,7 +6,7 @@ React + TypeScript + Vite 기반의 **범용 베이스 템플릿**입니다.
 - **기본 포지션**: CSR(클라이언트 사이드 렌더링) + 클라이언트 SEO 유틸
 - **SSR**: 확장 옵션으로 열어 두며, 필요 시 [docs/SSR_AND_SEO.md](./docs/SSR_AND_SEO.md) 및 `vite-ssr.config.ts` 참고
 
-## 📚 코딩 가이드라인
+## 코딩 가이드라인
 
 **모든 코딩 작업 전에 [`CODING_GUIDE.md`](./CODING_GUIDE.md)를 확인하세요.**
 
